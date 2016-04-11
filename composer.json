@@ -1,0 +1,12 @@
+{
+    "name": "hehetic/moviefriends",
+    "authors": [
+        {
+            "name": "Nicolas Castells",
+            "email": "castellsnicolas1303@gmail.com"
+        }
+    ],
+    "require": {
+        "facebook/php-sdk-v4": "^5.1"
+    }
+}
