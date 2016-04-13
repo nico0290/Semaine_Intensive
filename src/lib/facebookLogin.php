@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 // When the user attempt to login
 if (isset($_GET['facebookLogin'])) {
@@ -17,8 +17,9 @@ if (isset($_GET['facebookLogin'])) {
 
 
 if (isset($_GET['logout'])) {
+    session_start();
     session_destroy();
 
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit;
 }

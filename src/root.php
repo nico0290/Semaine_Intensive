@@ -30,7 +30,6 @@ if (isset($_SESSION['fbtoken'])) {
         exit;
     }
 
-
     $userInfos = $response->getGraphUser();
 }
 

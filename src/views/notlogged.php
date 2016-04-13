@@ -1,1 +1,1 @@
-<p><a href="<?= $facebookHelper->getLoginUrl('http://localhost:8888/Castells_Nicolas_Developpement_web/index.php?facebookLogin') ?>">Log In with facebook</a></p>
+<p><a href="<?= $facebookHelper->getLoginUrl('http://localhost:8888/Semaine_intensive-master/index.php?facebookLogin') ?>">Log In with facebook</a></p>
