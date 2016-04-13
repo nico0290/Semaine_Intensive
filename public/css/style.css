@@ -1,8 +1,8 @@
 body {
-    font-family: 'Helvetica Neue';
-    width      : 100%;
-    height     : 100%;
-    background : rgb(0, 0, 0);
+  font-family: 'Helvetica Neue';
+  width      : 100%;
+  height     : 100%;
+  /*background : rgb(0, 0, 0);*/
 }
 
 h2 {
@@ -83,23 +83,47 @@ h2 {
 }
 
 header {
-  height          : 50px;
-  background-color: #FFFFFF;
+  height: 75px;
+  background-color: rgb(229, 229, 229);
 }
 
-.title {
-    margin-left: 3%;
+.left {
+  left: 5%;
+}
+
+.right {
+  right: 0;
+}
+
+.right .user_pict {
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  /*background-color: #000000;*/
+}
+
+.left,
+.right {
+  height: 50px;
+  position: absolute;
+  margin: 7.5 0;
+  width: 20%;
 }
 
 .logo {
-    height             : inherit;
-    background-image   : url("../images/logo.png");
-    background-repeat  : no-repeat;
-    background-position: center;
-    -webkit-background-size: contain;
-    background-size    : contain;
-    width              : 50px;
+  height             : inherit;
+  background-image   : url("../images/logo.png");
+  background-repeat  : no-repeat;
+  background-position: center;
+  -webkit-background-size: contain;
+  background-size    : contain;
+  width              : 50px;
 }
+
+.title {
+  margin-left: 3%;
+}
+
 .logo,
 .title,
 .left,
@@ -108,77 +132,139 @@ header {
   vertical-align: middle;  
 }
 
-.right {
-  right: 0;
+.movie_infos {
+  width     : 100%;
+  height    : 300px;
+  position  : relative;
+  margin-top: 60px;
 }
 
 .infos_block,
 .poster {
-    position: absolute;
-}
-
-.infos_block {
-    margin-left: 240px;
-    margin-top : 17px;
-    border     : 1px solid black;
-    width      : calc(100% - 240px);
-}
-
-.left,
-.right {
-    height  : inherit;
-    position: absolute;
-    width   : 46.3%;
-}
-
-.left {
-    left: 5%;
+  position: absolute;
 }
 
 .poster {
-    height          : 266px;
-    width           : 180px;
-    margin-top      : 17px;
-    margin-left     : 30px;
-    background-color: black;
+  height          : 266px;
+  width           : 180px;
+  margin-top      : 17px;
+  margin-left     : 30px;
+  background-color: black;
 }
 
-.movie_infos {
-  width           : 100%;
-  height          : 300px;
-  position        : relative;
-  margin-top      : 60px;
-  background-color: aliceblue;
+.infos_block {
+  margin-left: 240px;
+  margin-top : 17px;
+  width      : calc(100% - 240px);
 }
 
-.movie_title, .infos {
-    margin-left: 30px;
-    margin-top: 15px;
-}
-
-.infos {
-    width : 100%;
-    height: 250px;
+.director {
+  margin-left: 20px;
 }
 
 .director,
 .kind,
 .duration,
-.release_date,
+.release_date {
+  display       : inline-block;
+  height        : 20px;
+  width         : 16%;
+  vertical-align: top;
+  text-align    : center;
+}
+
+.movie_title {
+  margin-left: 30px;
+  margin-top : 15px;
+}
+
+.artiste {
+  color: rgb(24, 142, 192);
+}
+
+.infos {
+  width     : 100%;
+  height    : 230px;
+  font-size : 12px;
+  margin-top: 20px;
+}
+
+.infos,
+.rating {
+  display       : inline-block;
+  vertical-align: middle;
+}
+
 .cast {
-    display: inline-block;
-    border: 1px solid black;
-    height: 20px;
-    width: 10%;
+  margin-left: 30px;
+  margin-top : 20px;
 }
 
-.movie_title, .infos {
+.rating {
+  color      : rgb(255, 153, 0);
+  font-size  : 3vw;
+  margin-left: 100px;
+}
+
+.summary {
+  margin-left: 30px;
+  margin-top : 20px;
+  line-height: normal;
+  font-size  : 1.5vw;
+  width      : 80%;
+}
+
+@media only screen and (max-width: 780px) {
+  .rating {
+    margin-left: 5px;
+  }
+
+  .infos {
+    font-size: 2vw;
+    margin-top: 20px
+  }
+  .cast,
+  .summary {
+    margin-left: 20px;
+  }
+  .left,
+  .right {
+    width: 39%;
+  }
+.summary {
+  font-size: 2.4vw;
+}
+  .poster {
+    height: 216px;
+    width: 130px;
+    margin-top: 17px;
     margin-left: 30px;
-    margin-top: 15px;
+    background-color: black;
+  }
+
+  .infos {
+    width: 100%;
+    height: 230px;
+    font-size: 2vw;
+    margin-top: 20px;
+  }
+
+  .infos_block {
+    margin-left: 160px;
+    margin-top: 17px;
+    width: calc(100% - 150px);
+  }
+
 }
 
-
-
-
-
-
+/*
+  **questionnaire
+*/
+.col_1 {
+  margin-left: 2%;
+}
+.col {
+  width: 32%;
+  height: 300px;
+  display: inline-block;
+}
