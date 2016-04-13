@@ -2,7 +2,7 @@
 
 // Connexion variables
 define('DB_HOST','localhost');
-define('DB_NAME','moviefriends');
+define('DB_NAME','movieFriends');
 define('DB_USER','root');
 define('DB_PASS','root'); // '' par défaut sur windows
 
