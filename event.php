@@ -2,6 +2,7 @@
 header("Accept:application/json");
 require_once __DIR__ ."/src/root.php";
 
+<<<<<<< HEAD
 if (!$userInfos) {
 	header('Location: index.php');
 	exit;
@@ -34,10 +35,23 @@ $movies = getHighestMovies($eventID);
 
 require_once __DIR__ ."/src/views/template/header.php";
 ?>
+=======
+if ($userInfos) {
+	require_once __DIR__ ."/src/lib/eventsDelete.php";
+	require_once __DIR__ ."/src/lib/eventsAdd.php";
+} else {
+	require_once __DIR__ ."/src/lib/facebookLogin.php";
+}
+
+require_once __DIR__ ."/src/views/template/header.php";
+?>
+<?php require_once __DIR__ ."/src/views/template/section_header.php"; ?>
+>>>>>>> origin/master
 <section class="container">
 	<h1 class="submit_title">Submit your movie</h1>
 	<div class="left_col">
 		<input type="text" class="movie_search" name="movie">
+<<<<<<< HEAD
 		<div class="proposed_movies_container">
 			<h2>proposed movies</h2>
 			<div class="proposed_movies">
@@ -50,6 +64,10 @@ require_once __DIR__ ."/src/views/template/header.php";
 						</div>
 				<?php endforeach; ?>
 			</div>
+=======
+		<div class="proposed_movies">
+			
+>>>>>>> origin/master
 		</div>
 		<div class="cream_of_the_crop">
 			<div class="movie_display">
@@ -83,7 +101,10 @@ require_once __DIR__ ."/src/views/template/header.php";
 		</div>
 	</div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	<div class="right_col">
 		<div class="remaining_time">
 			<span class="days"></span>
@@ -131,6 +152,12 @@ require_once __DIR__ ."/src/views/template/header.php";
 		<div class="comment"></div>
 		<div class="map"></div>
 	</div>
+<<<<<<< HEAD
 </section>
 
 <?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
+=======
+
+</section>
+<?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
+>>>>>>> origin/master

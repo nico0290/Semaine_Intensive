@@ -2,7 +2,8 @@ body {
   font-family: 'Helvetica Neue';
   width      : 100%;
   height     : 100%;
-  /*background : rgb(0, 0, 0);*/
+  /*overflow   : hidden;*/
+  background : rgb(249, 250, 252);
 }
 
 .notlogged .banniere{
@@ -189,6 +190,12 @@ body {
 }
 
 .black {
+<<<<<<< HEAD
+=======
+  background: black;
+  opacity   : 0.5;
+  z-index   : 2;
+>>>>>>> origin/master
   width     : 100vw;
   height    : 100vh;
   position  : fixed;
@@ -565,6 +572,7 @@ textarea:focus {
 
 .form_col_1,
 .form_col_2 {
+<<<<<<< HEAD
   display: inline-block;
   width  : 49%;
 }
@@ -622,6 +630,65 @@ h1.create_your_film {
   width  : 3.8vw;
   height : 3.8vw;
   display: inline-block;
+=======
+  display: inline-block;
+  width  : 49%;
+}
+
+.second_part {
+  width: 100%;
+}
+
+.second_part .line {
+  width: 100%;
+}
+
+input#city {
+  width: 80%;
+}
+
+input#hour {
+  width: 80%;
+}
+
+/*
+**col 2**
+*/
+h1.create_your_film {
+  text-align: center;
+  font-size : 2vw;
+}
+
+.brings,
+.pays {
+  height             : 35%;
+  width              : 100%;
+  position           : relative;
+  transition-duration: 0.3s;
+}
+
+.brings .food_grid {
+  width     : 100%;
+  height    : 90%;
+  margin    : 1% 0;
+  text-align: center;
+}
+
+
+.food_line {
+  position: relative;
+  height  : 50%;
+}
+
+.food_line.food_line_1 {
+  margin-top: 4%;
+}
+
+.food_icon {
+  width  : 3.8vw;
+  height : 3.8vw;
+  display: inline-block;
+>>>>>>> origin/master
 }
 .food_icon_1 {
   background-image       : url("../images/icons/soda.png");
@@ -933,6 +1000,10 @@ a {
     width   : 181px;
     height  : 300px;
     display : inline-block;
+<<<<<<< HEAD
+=======
+    border  : 1px solid black;
+>>>>>>> origin/master
     position: relative;
   }
 
@@ -1122,3 +1193,12 @@ a {
     }
 
   }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> origin/master
