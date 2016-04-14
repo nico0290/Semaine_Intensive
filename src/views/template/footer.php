@@ -2,5 +2,6 @@
     <script src="public/js/app/main.js"></script>
     <script type="text/javascript" src="public/js/app/questionnaire_animation.js"></script>
     <script src="public/js/app/search-controller.js"></script>  
+    <script src="public/js/app/event.js"></script>
     </body>
 </html>

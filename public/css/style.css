@@ -2,7 +2,8 @@ body {
   font-family: 'Helvetica Neue';
   width      : 100%;
   height     : 100%;
-  /*background : rgb(0, 0, 0);*/
+  /*overflow   : hidden;*/
+  background : rgb(249, 250, 252);
 }
 
 h2 {
@@ -10,13 +11,13 @@ h2 {
 }
 
 .black {
-	background: black;
-	opacity   : 0.5;
-	z-index   : 2;
-	width     : 100vw;
-	height    : 100vh;
-	position  : fixed;
-	color     : white;
+  background: black;
+  opacity   : 0.5;
+  z-index   : 2;
+  width     : 100vw;
+  height    : 100vh;
+  position  : fixed;
+  color     : white;
 }
 
 #searchbar {
@@ -26,10 +27,10 @@ h2 {
 }
 
 .background {
-	height             : 268px;
-	width              : 182px;
-	position           : fixed;
-	transition-duration: 1000ms;
+  height             : 268px;
+  width              : 182px;
+  position           : fixed;
+  transition-duration: 1000ms;
 }
 
 .container {
@@ -45,7 +46,7 @@ h2 {
   width: 20%;
 }
 
-.proposed_movies {
+.proposed_movies_container .proposed_movies {
   border: 1px solid #000000;
   height: 200px;
 }
@@ -56,37 +57,39 @@ h2 {
   vertical-align: top;
 }
 
-.people_coming,
-.who_brings_what, .rdv {
+.right_side .people_coming,
+.right_side .who_brings_what,
+.rdv {
   text-align: center;
 }
 
-.people_coming, .who_brings_what {
+.right_side .people_coming,
+.right_side .who_brings_what {
   height: 30px;
 }
 
 ::-webkit-input-placeholder {
- text-align: center;
+  text-align: center;
 }
 
 :-moz-placeholder {
- text-align: center;  
+  text-align: center;  
 }
 
 ::-moz-placeholder {
- text-align: center;  
+  text-align: center;  
 }
 
 :-ms-input-placeholder {
- text-align: center; 
+  text-align: center; 
 }
 
 header {
-  height: 75px;
-  -moz-box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
+  height            : 75px;
+  -moz-box-shadow   : 0px 1px 10px 0px rgb(0, 0, 0);
   -webkit-box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
-  -o-box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
-  box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
+  -o-box-shadow     : 0px 1px 10px 0px rgb(0, 0, 0);
+  box-shadow        : 0px 1px 10px 0px rgb(0, 0, 0);
 }
 
 .left {
@@ -98,18 +101,18 @@ header {
 }
 
 .right .user_pict {
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
+  border-radius: 50px;
+  width        : 50px;
+  height       : 50px;
   /*background-color: #000000;*/
 }
 
 .left,
 .right {
-  height: 50px;
+  height  : 50px;
   position: absolute;
-  margin: 7.5 0;
-  width: 20%;
+  margin  : 7.5 0;
+  width   : 20%;
 }
 
 .logo {
@@ -134,7 +137,7 @@ header {
   vertical-align: middle;  
 }
 
-.movie_infos {
+.movie_infos_container {
   width     : 100%;
   height    : 300px;
   position  : relative;
@@ -175,7 +178,7 @@ header {
   text-align    : center;
 }
 
-.movie_title {
+.infos_block .movie_title {
   margin-left: 30px;
   margin-top : 15px;
 }
@@ -222,7 +225,7 @@ header {
   }
 
   .infos {
-    font-size: 2vw;
+    font-size : 2vw;
     margin-top: 20px
   }
   .cast,
@@ -237,10 +240,10 @@ header {
     font-size: 2.4vw;
   }
   .poster {
-    height: 216px;
-    width: 130px;
-    margin-top: 17px;
-    margin-left: 30px;
+    height          : 216px;
+    width           : 130px;
+    margin-top      : 17px;
+    margin-left     : 30px;
     background-color: black;
   }
 
@@ -260,465 +263,695 @@ header {
 }
 
 /*
-  **questionnaire**
+**questionnaire**
+*/
+
+.icons {
+  position: fixed;
+  display : none;
+  z-index : 100;
+  width   : 100vw;
+  height  : 100vh;
+}
+
+.close,
+.icons_col,
+.food_icon.food_icon_6 {
+  cursor: pointer;
+}
+
+.icons_container {
+  width           : 50vh;
+  height          : 50vh;
+  margin          : 20vh auto 0 auto;
+  background-color: antiquewhite;
+}
+
+span.close {
+  width                  : 2vw;
+  height                 : 2vw;
+  display                : inline-block;
+  position               : absolute;
+  background-repeat      : no-repeat;
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position: center;
+  background-image: url("../images/icons/delete_red.png");
+}
+
+span.icons_col_check {
+  position               : absolute;
+  width                  : 1vw;
+  height                 : 1vw;
+  background-repeat      : no-repeat;
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : center;
+  bottom                 : 1vw;
+  right                  : 0vw;
+}
+
+.unchecked {
+  background-image: url("../images/icons/mark_gray.png");
+
+}
+.checked {
+  background-image: url("../images/icons/mark_green.png");
+}
+
+.icons_line_1,
+.icons_line_2,
+.icons_line_3 {
+  display   : inline-block;
+  width     : 32%;
+  margin-top: 18%;
+  text-align: center;
+  height    : 90%;
+}
+
+.icons_col {
+  width              : 48%;
+  background-position: center;
+  height             : 32%;
+  position           : relative;
+  display            : inline-block;
+}
+.col {
+  width         : 32%;
+  margin-top    : 32px;
+  height        : 560px;
+  display       : inline-block;
+  vertical-align: top;
+}
+
+.col_1 {
+  margin-left: 2%;
+}
+
+.col_header {
+  width     : 100%;
+  text-align: center;
+  height    : 9%;
+}
+
+.col_container {
+  width : 100%;
+  height: 91%;
+}
+
+.first_part input {
+  width: 89%;
+}
+
+.second_part input,
+.first_part input {
+  height: 45px;
+}
+
+.label {
+  margin-top: 14px;
+}
+
+input,
+textarea {
+  display      : block;
+  border       : solid black 1px;
+  border-radius: 4px;
+}
+
+textarea#comments {
+  width : 89%;
+  height: 10%;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid rgb(24, 142, 192);
+}
+
+.form_col_1,
+.form_col_2 {
+  display: inline-block;
+  width  : 49%;
+}
+
+.second_part {
+  width: 100%;
+}
+
+.second_part .line {
+  width: 100%;
+}
+
+input#city {
+  width: 80%;
+}
+
+input#hour {
+  width: 80%;
+}
+
+/*
+**col 2**
+*/
+h1.create_your_film {
+  text-align: center;
+  font-size : 2vw;
+}
+
+.brings,
+.pays {
+  height             : 35%;
+  width              : 100%;
+  position           : relative;
+  transition-duration: 0.3s;
+}
+
+.brings .food_grid {
+  width     : 100%;
+  height    : 90%;
+  margin    : 1% 0;
+  text-align: center;
+}
+
+
+.food_line {
+  position: relative;
+  height  : 50%;
+}
+
+.food_line.food_line_1 {
+  margin-top: 4%;
+}
+
+.food_icon {
+  width  : 3.8vw;
+  height : 3.8vw;
+  display: inline-block;
+}
+.food_icon_1 {
+  background-image       : url("../images/icons/soda.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon_2 {
+  background-image       : url("../images/icons/popcorn.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon_3 {
+  background-image       : url("../images/icons/beer.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon_4 {
+  background-image       : url("../images/icons/chips.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon_5 {
+  background-image       : url("../images/icons/candy.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon.food_icon_6 {
+  background-image       : url("../images/icons/plus.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.icons_col_6.food_icon_6 {
+  background-image       : url("../images/icons/alcohol.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+}
+.food_icon_7 {
+  background-image       : url("../images/icons/biscuit.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_8 {
+  background-image       : url("../images/icons/can.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_9 {
+  background-image       : url("../images/icons/cracks.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_10 {
+  background-image       : url("../images/icons/fruit.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_11 {
+  background-image       : url("../images/icons/icecream.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_12 {
+  background-image       : url("../images/icons/kebab.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_13 {
+  background-image       : url("../images/icons/mcdo.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_14 {
+  background-image       : url("../images/icons/meat.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_15 {
+  background-image       : url("../images/icons/mexicanfood.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_16 {
+  background-image       : url("../images/icons/pasta.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_17 {
+  background-image       : url("../images/icons/pizza.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.food_icon_18 {
+  background-image       : url("../images/icons/sushi.png");
+  -webkit-background-size: contain;
+  background-size        : contain;
+  background-position    : middle;
+  background-repeat      : no-repeat;
+  transition-duration    : 0.3s;
+}
+.or {
+  text-align: center;
+  display   : inline-block;
+  position  : relative;
+  width     : 100%;
+  color     : rgb(255, 153, 0);
+  font-size : 2vw;
+}
+
+.or span {
+  width     : 100%;
+  display   : inline-block;
+  margin-top: 6%;
+}
+
+.brings h2,
+.pays   h2 {
+  margin-left: 30px;
+}
+
+.how_many {
+  padding           : 20px;
+  margin            : 0 auto;
+  text-decoration   : none;
+  margin-top        : 15%;
+  display           : block;
+  background-color  : rgb(255, 153, 0);
+  width             : 210px;
+  border-radius     : 10px;
+  text-align        : center;
+  -webkit-transition: 0.3s;
+  -moz-transition   : 0.3s;
+  -o-transition     : 0.3s;
+  transition        : 0.3s;
+}
+
+.how_many:hover,
+.confirm:hover {
+  -webkit-filter: brightness(1.2);
+  -o-filter     : brightness(1.2);
+  -moz-filter   : brightness(1.2);
+  filter        : brightness(1.2);
+}
+
+
+.hover.brings_hover {
+  width           : 100%;
+  height          : 100%;
+  text-align      : center;
+  font-size       : 2vw;
+  color           : rgb(255, 153, 0);
+  position        : absolute;
+  background-color: rgba(229, 229, 229, 1);
+}
+
+.hover.pays_hover {
+  height          : 100%;
+  width           : 100%;
+  text-align      : center;
+  font-size       : 2vw;
+  color           : rgb(255, 153, 0);
+  position        : absolute;
+  background-color: rgba(229, 229, 229, 0.8);
+}
+
+.hover span {
+  display   : inline-block;
+  margin-top: 17%;
+}
+
+.brings:hover .brings_hover {
+  display: none;
+}
+
+.pays:hover .pays_hover {
+  display: none;
+}
+
+.food_icon.food_icon_6 {
+  transition-duration: 0.3s;
+}
+
+.food_icon.food_icon_6:hover {
+  -webkit-transform: rotateZ(33deg);
+  -ms-transform    : rotateZ(33deg);
+  -o-transform     : rotateZ(33deg);
+  transform        : rotateZ(33deg);
+}
+
+/*
+**col 3**
+*/
+
+#friend_search {
+  margin: 0 auto;
+  width : 100%;
+}
+
+.fb_friend_container {
+  margin: 0 auto;
+  width : 80%;
+}
+
+.fb_user_pict,
+.fb_user_name {
+  display       : inline-block;
+  vertical-align: middle;
+  margin-top    : 20px;
+  margin-left   : 94px;
+}
+
+.fb_user_pict {
+  border-radius   : 100px;
+  background-color: rgb(0, 0, 0);
+  width           : 50px;
+  height          : 50px;
+}
+
+a.confirm {
+  padding         : 20px;
+  margin          : -4% auto 0 auto;
+  display         : block;
+  background-color: rgb(255, 153, 0);
+  width           : 210px;
+  border-radius   : 10px;
+  text-align      : center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+  **event**
   */
 
-  .icons {
-    position: fixed;
-    display: none;
-    z-index : 100;
-    width   : 100vw;
-    height  : 100vh;
+  h1.submit_title {
+    font-size  : 2vw;
+    font-weight: bold;
+    margin     : 30 0 30 0;
   }
 
-  .close,
-  .icons_col,
-  .food_icon.food_icon_6 {
-    cursor: pointer;
-  }
-
-  .icons_container {
-    width           : 50vh;
-    height          : 50vh;
-    margin          : 20vh auto 0 auto;
-    background-color: antiquewhite;
-  }
-
-  span.close {
-    width: 2vw;
-    height: 2vw;
-    display: inline-block;
-    position: absolute;
-    background-repeat: no-repeat;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-position: center;
-    background-image: url("../images/icons/delete_red.png");
-  }
-
-  span.icons_col_check {
-    position        : absolute;
-    width           : 1vw;
-    height          : 1vw;
-    background-repeat: no-repeat;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-position: center;
-    bottom          : 1vw;
-    right           : 0vw;
-  }
-
-  .unchecked {
-    background-image: url("../images/icons/mark_gray.png");
-
-  }
-  .checked {
-    background-image: url("../images/icons/mark_green.png");
-  }
-
-  .icons_line_1,
-  .icons_line_2,
-  .icons_line_3 {
-    display: inline-block;
-    width: 32%;
-    margin-top: 18%;
+  .coming h2 {
     text-align: center;
-    height: 90%;
   }
 
-  .icons_col {
-    width: 48%;
-    background-position: center;
-    height: 32%;
-    position: relative;
-    display: inline-block;
+  input.movie_search {
+    height       : 50px;
+    width        : 100%;
+    margin-bottom: 30px;
   }
-  .col {
-    width: 32%;
-    margin-top: 32px;
-    height: 560px;
-    display: inline-block;
+
+  .left_col {
+    width: 880px;
+  }
+
+  .left_col, .right_col {
+    display       : inline-block;
     vertical-align: top;
   }
 
-  .col_1 {
-    margin-left: 2%;
-  }
-
-  .col_header {
-    width: 100%;
-    text-align: center;
-    height: 9%;
-  }
-
-  .col_container {
-    width: 100%;
-    height: 91%;
-  }
-
-  .first_part input {
-    width: 89%;
-  }
-
-  .second_part input,
-  .first_part input {
-    height: 45px;
-  }
-
-  .label {
-    margin-top: 14px;
-  }
-
-  input,
-  textarea {
-    display: block;
-    border: solid black 1px;
-    border-radius: 4px;
-  }
-
-  textarea#comments {
-    width: 89%;
-    height: 10%;
-  }
-
-  input:focus,
-  textarea:focus {
-    border: 1px solid rgb(24, 142, 192);
-  }
-
-  .form_col_1,
-  .form_col_2 {
-    display: inline-block;
-    width: 49%;
-  }
-
-  .second_part {
-    width: 100%;
-  }
-
-  .second_part .line {
-    width: 100%;
-  }
-
-  input#city {
-    width: 80%;
-  }
-
-  input#hour {
-    width: 80%;
-  }
-
-/*
-  **col 2**
-  */
-  h1.create_your_film {
-    text-align: center;
-    font-size: 2vw;
-  }
-
-  .brings,
-  .pays {
-    height             : 35%;
-    width              : 100%;
-    position           : relative;
-    transition-duration: 0.3s;
-  }
-
-  .brings .food_grid {
-    width     : 100%;
-    height    : 90%;
-    margin    : 1% 0;
-    text-align: center;
-  }
-
-
-  .food_line {
+  .movie_display {
+    width   : 181px;
+    height  : 300px;
+    display : inline-block;
+    border  : 1px solid black;
     position: relative;
-    height  : 50%;
   }
 
-  .food_line.food_line_1 {
-    margin-top: 4%;
-  }
-  
-  .food_icon {
-    width  : 3.8vw;
-    height : 3.8vw;
-    display: inline-block;
-  }
-  .food_icon_1 {
-    background-image       : url("../images/icons/soda.png");
+  .movie_jacket {
+    width                  : 100%;
+    height                 : 266px;
+    /*background-image       : url("../images/her-movie-poster.jpg");*/
     -webkit-background-size: contain;
     background-size        : contain;
-    background-position    : middle;
+    position               : relative;
     background-repeat      : no-repeat;
+    background-position    : center;
   }
-  .food_icon_2 {
-    background-image       : url("../images/icons/popcorn.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .movie_display .movie_infos {
+    height  : 34px;
+    width   : 100%;
+    position: relative;
   }
-  .food_icon_3 {
-    background-image       : url("../images/icons/beer.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .movie_display .movie_infos .movie_title {
+    position: absolute;
+    left    : 0;
+    height  : 100%;
+    width   : 49%;
   }
-  .food_icon_4 {
-    background-image       : url("../images/icons/chips.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .movie_display .movie_infos .more {
+    position: absolute;
+    right   : 0;
+    height  : 100%;
+    width   : 49%;
   }
-  .food_icon_5 {
-    background-image       : url("../images/icons/candy.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .right_col {
+    width: 280px;
   }
-  .food_icon.food_icon_6 {
-    background-image       : url("../images/icons/plus.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .right_col .remaining_time {
+    width : 100%;
+    height: 110px;
   }
-  .icons_col_6.food_icon_6 {
-    background-image       : url("../images/icons/alcohol.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
+
+  .right_col .coming {
+    position: relative;
+    height  : 140px;
   }
-  .food_icon_7 {
-    background-image       : url("../images/icons/biscuit.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_8 {
-    background-image       : url("../images/icons/can.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_9 {
-    background-image       : url("../images/icons/cracks.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_10 {
-    background-image       : url("../images/icons/fruit.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_11 {
-    background-image       : url("../images/icons/icecream.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_12 {
-    background-image       : url("../images/icons/kebab.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_13 {
-    background-image       : url("../images/icons/mcdo.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_14 {
-    background-image       : url("../images/icons/meat.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_15 {
-    background-image       : url("../images/icons/mexicanfood.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_16 {
-    background-image       : url("../images/icons/pasta.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_17 {
-    background-image       : url("../images/icons/pizza.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .food_icon_18 {
-    background-image       : url("../images/icons/sushi.png");
-    -webkit-background-size: contain;
-    background-size        : contain;
-    background-position    : middle;
-    background-repeat      : no-repeat;
-    transition-duration    : 0.3s;
-  }
-  .or {
-    text-align: center;
-    display   : inline-block;
+
+  .answers_container {
+    margin    : 0 auto;
     position  : relative;
-    width     : 100%;
-    color     : rgb(255, 153, 0);
-    font-size : 2vw;
+    width     : 70%;
+    margin-top: 30px;
+    height    : 60px;
   }
 
-  .or span {
-    width     : 100%;
-    display   : inline-block;
-    margin-top: 6%;
+  .right_col .coming .yes,
+  .right_col .coming .no {
+    display : inline-block;
+    width   : 50px;
+    height  : 50px;
+    position: absolute;
   }
 
-  .brings h2,
-  .pays   h2 {
+  .yes_positive {
+    background-image       : url("../images/icons/mark_green.png");
+    -webkit-background-size: contain;
+    background-size        : contain;
+    background-repeat      : no-repeat;
+    background-position    : center;
+    left                   : 0;
+  }
+
+  .yes_negative {
+    background-image       : url("../images/icons/mark_gray.png");
+    -webkit-background-size: contain;
+    background-size        : contain;
+    background-repeat      : no-repeat;
+    background-position    : center;
+    left                   : 0;
+  }
+
+  .no_positive {
+    background-image       : url("../images/icons/delete_red.png");
+    -webkit-background-size: contain;
+    background-size        : contain;
+    background-repeat      : no-repeat;
+    background-position    : center;
+    right                  : 0;
+  }
+
+  .no_negative {
+    background-image       : url("../images/icons/delete_gray.png");
+    -webkit-background-size: contain;
+    background-size        : contain;
+    background-repeat      : no-repeat;
+    background-position    : center;
+    right                  : 0;
+  }
+
+  .right_col .people_coming .people_infos {
+    height       : 100px;
+    margin-bottom: 30px;
+    position     : relative;
+  }
+
+  .right_col .people_coming .people_infos .fb_pict {
+    width        : 100px;
+    height       : 100%;
+    border-radius: 50px;
+    background-color: rgb(0, 0, 0);
+  }
+
+  .people_coming .people_infos .fb_pict,
+  .people_coming .people_infos .fb_infos {
+    display       : inline-block;
+    vertical-align: middle;
+  }
+
+  .right_col .people_coming .people_infos .fb_infos div {
+    width     : 100%;
+    margin-top: 30px;
+  }
+  .right_col .people_coming .people_infos .fb_infos {
     margin-left: 30px;
   }
 
-  .how_many {
-    padding           : 20px;
-    margin            : 0 auto;
-    text-decoration   : none;
-    margin-top        : 15%;
-    display           : block;
-    background-color  : rgb(255, 153, 0);
-    width             : 210px;
-    border-radius     : 10px;
-    text-align        : center;
-    -webkit-transition: 0.3s;
-    -moz-transition   : 0.3s;
-    -o-transition     : 0.3s;
-    transition        : 0.3s;
+
+  .remaining_time,
+  .coming,
+  .people_coming {
+    background-color: rgb(255, 255, 255);
   }
 
-  .how_many:hover,
-  .confirm:hover {
-    -webkit-filter: brightness(1.2);
-    -o-filter     : brightness(1.2);
-    -moz-filter   : brightness(1.2);
-    filter        : brightness(1.2);
+  .coming,
+  .people_coming {
+    margin-top: 30px;
+  }
+
+  @media only screen and (max-width: 1295px) {
+    .movie_display {
+           width   : 151px;
+           height  : 270px;
+           display : inline-block;
+           border  : 1px solid black;
+           position: relative;
+    }
+    .left_col {     
+      width: 618px;
+    }
+
+    .left_col,
+    .right_col {
+      display: block;
+      margin : 0 auto;
+    }
+
+    .remaining_time,
+    .coming,
+    .people_coming,
+    .comment,
+    .map {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .right_col {
+      width: 90%;
+    }
+
+    .right_col .remaining_time {
+      width: 20%;
+      height: 110px;
+    }
+
+    .right_col .coming {
+      position: relative;
+      height: 140px;
+      width: 20%;
+    }
+
+    .coming {
+    width: 20%;
+}
+    .coming, .people_coming {
+      margin-top: 0;
+    }
+
   }
 
 
-  .hover.brings_hover {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 2vw;
-    color: rgb(255, 153, 0);
-    position: absolute;
-    background-color: rgba(229, 229, 229, 1);
-  }
 
-  .hover.pays_hover {
-    height          : 100%;
-    width           : 100%;
-    text-align      : center;
-    font-size       : 2vw;
-    color           : rgb(255, 153, 0);
-    position        : absolute;
-    background-color: rgba(229, 229, 229, 0.8);
-  }
 
-  .hover span {
-    display: inline-block;
-    margin-top: 17%;
-  }
 
-  .brings:hover .brings_hover {
-    display: none;
-  }
 
-  .pays:hover .pays_hover {
-    display: none;
-  }
-
-  .food_icon.food_icon_6 {
-    transition-duration: 0.3s;
-  }
-
-  .food_icon.food_icon_6:hover {
-    -webkit-transform: rotateZ(33deg);
-    -ms-transform    : rotateZ(33deg);
-    -o-transform     : rotateZ(33deg);
-    transform        : rotateZ(33deg);
-  }
-
-/*
-  **col 3**
-  */
-
-  #friend_search {
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .fb_friend_container {
-    margin: 0 auto;
-    width: 80%;
-  }
-
-  .fb_user_pict,
-  .fb_user_name {
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: 20px;
-    margin-left: 94px;
-  }
-
-  .fb_user_pict {
-    border-radius: 100px;
-    background-color: rgb(0, 0, 0);
-    width: 50px;
-    height: 50px;
-  }
-
-  a.confirm {
-    padding: 20px;
-    margin: -4% auto 0 auto;
-    display: block;
-    background-color: rgb(255, 153, 0);
-    width: 210px;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  a {
-    text-decoration: none;
-  }

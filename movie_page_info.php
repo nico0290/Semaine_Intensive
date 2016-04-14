@@ -16,7 +16,7 @@ require_once __DIR__ ."/src/views/template/header.php";
 	
 <?php require_once __DIR__ ."/src/views/template/section_header.php"; ?>
 
-	<div class="movie_infos">
+	<div class="movie_infos_container">
 		<div class="poster"></div>
 		<div class="infos_block">
 			<div class="movie_title">Lorem Ipsum</div>
