@@ -204,6 +204,6 @@ require_once __DIR__ ."/src/views/template/header.php";
 			</div>
 		</div>
 	</div>
-	<a href="#" class="confirm">Great</a>
+	<a href="#" class="confirm">Create</a>
 </section>
 <?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
