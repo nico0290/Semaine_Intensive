@@ -71,7 +71,6 @@ form.on('submit', function() {
 		comment: comment_value,
 	}, function(data) {
 		if (data.error) return alert(data.message);
-		window.location.href = "event.pho?event="+ data.event
 		console.log('ok');
 	});
 

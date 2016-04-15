@@ -199,6 +199,6 @@ require_once __DIR__ ."/src/views/template/header.php";
 
 		</div>
 	</div>
-	<a window.location.href = "event.pho?event="+ data.event class="confirm">Create</a>
+	<a class="confirm">Create</a>
 </section>
 <?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
