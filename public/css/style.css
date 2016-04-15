@@ -2,8 +2,52 @@ body {
   font-family: 'Helvetica Neue';
   width      : 100%;
   height     : 100%;
-  /*overflow   : hidden;*/
-  background : rgb(249, 250, 252);
+  background-color: #f9fafc;
+}
+
+.title{
+  margin-top: 5px;
+}
+
+.title_movie{
+  font-family: 'Gotham';
+  font-size: 29px;
+  font-weight: 300;
+  color: black;
+}
+
+.title_friends{
+  font-family: 'Gotham';
+  font-size: 29px;
+  font-weight: 700;
+  color: black;
+}
+
+.image_index{
+  width: 200px;
+  height: 400px;
+  overflow: hidden;
+  display: inherit;
+}
+
+.button_event{
+  position: absolute;
+  background-color: #ff9900;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 100px;
+  margin-left: 70px;
+}
+
+.button_event .a{
+  position: absolute;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .notlogged .banniere{
@@ -41,10 +85,10 @@ body {
 
 .notlogged .button_facebook_login{
   position: absolute;
-  margin-left: calc(50vw - 150px);
+  margin-left: calc(50vw - 130px);
   margin-top: calc(50vh - 150px);
-  height: 75px;
-  width: 300px;
+  height: 60px;
+  width: 260px;
   background:linear-gradient(to bottom, #4c69ba 5%, #3b54a0 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4c69ba', endColorstr='#3b54a0',GradientType=0);
   background-color:#4c69ba;
@@ -54,7 +98,7 @@ body {
   color:#ffffff;
   font-family:Arial;
   font-size:19px;
-  padding:12px 37px;
+  padding:12px 12px;
   text-decoration:none;
 }
 .notlogged .button_facebook_login:hover {
@@ -70,13 +114,13 @@ body {
 
 .notlogged .button_facebook_login img{
   position: absolute;
-  margin-top: 10px;
+  margin-top: 7px;
   margin-left: 5px;
 }
 
 .notlogged .button_facebook_login p{
-  margin-top: 15px;
-  margin-left: 35px;
+  margin-top: 12px;
+  margin-left: 45px;
   position: absolute;
 }
 
@@ -117,7 +161,7 @@ body {
 
 .coming_event{
   width: 1210px;
-  margin-left: calc(50vw - 525px);
+  margin-left: calc(50vw - 245px);
   margin-top: 20px;
 }
 
@@ -190,12 +234,6 @@ body {
 }
 
 .black {
-<<<<<<< HEAD
-=======
-  background: black;
-  opacity   : 0.5;
-  z-index   : 2;
->>>>>>> origin/master
   width     : 100vw;
   height    : 100vh;
   position  : fixed;
@@ -228,8 +266,44 @@ body {
   width: 20%;
 }
 
-.proposed_movies_container .proposed_movies {
+.proposed_movies_container {
+  background-color: #ffffff;
   border: 1px solid #000000;
+  box-shadow: 3px 3px 1px #888888;
+  border-radius:10px;
+}
+
+.proposed_movies_container h2{
+  font-family: 'Open Sans';
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.proposed_movies_container .proposed_movies{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.proposed_movies_container .movie_display{
+  margin-bottom: 45px;
+  margin-right: 10px;
+}
+
+.movie_display h1{
+  font-family: 'Open Sans';
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.movie_display p{
+  font-family: 'Open Sans';
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 7px;
 }
 
 .container .left_side,
@@ -271,6 +345,7 @@ header {
   -webkit-box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
   -o-box-shadow     : 0px 1px 10px 0px rgb(0, 0, 0);
   box-shadow        : 0px 1px 10px 0px rgb(0, 0, 0);
+  background-color: #fefefe;
 }
 
 .left {
@@ -293,7 +368,7 @@ header {
   height  : 50px;
   position: absolute;
   margin  : 7.5 0;
-  width   : 20%;
+  width   : 30%;
 }
 
 .logo {
@@ -562,6 +637,7 @@ textarea {
 
 textarea#comments {
   width : 89%;
+  max-width: 89%;
   height: 10%;
 }
 
@@ -572,7 +648,6 @@ textarea:focus {
 
 .form_col_1,
 .form_col_2 {
-<<<<<<< HEAD
   display: inline-block;
   width  : 49%;
 }
@@ -630,65 +705,6 @@ h1.create_your_film {
   width  : 3.8vw;
   height : 3.8vw;
   display: inline-block;
-=======
-  display: inline-block;
-  width  : 49%;
-}
-
-.second_part {
-  width: 100%;
-}
-
-.second_part .line {
-  width: 100%;
-}
-
-input#city {
-  width: 80%;
-}
-
-input#hour {
-  width: 80%;
-}
-
-/*
-**col 2**
-*/
-h1.create_your_film {
-  text-align: center;
-  font-size : 2vw;
-}
-
-.brings,
-.pays {
-  height             : 35%;
-  width              : 100%;
-  position           : relative;
-  transition-duration: 0.3s;
-}
-
-.brings .food_grid {
-  width     : 100%;
-  height    : 90%;
-  margin    : 1% 0;
-  text-align: center;
-}
-
-
-.food_line {
-  position: relative;
-  height  : 50%;
-}
-
-.food_line.food_line_1 {
-  margin-top: 4%;
-}
-
-.food_icon {
-  width  : 3.8vw;
-  height : 3.8vw;
-  display: inline-block;
->>>>>>> origin/master
 }
 .food_icon_1 {
   background-image       : url("../images/icons/soda.png");
@@ -999,11 +1015,8 @@ a {
   .movie_display {
     width   : 181px;
     height  : 300px;
+    vertical-align: top;
     display : inline-block;
-<<<<<<< HEAD
-=======
-    border  : 1px solid black;
->>>>>>> origin/master
     position: relative;
   }
 
@@ -1040,6 +1053,7 @@ a {
 
   .right_col {
     width: 280px;
+    float: right;
   }
 
   .right_col .remaining_time {
@@ -1114,6 +1128,7 @@ a {
     width        : 100px;
     height       : 100%;
     border-radius: 50px;
+    overflow: hidden;
     background-color: rgb(0, 0, 0);
   }
 
@@ -1133,14 +1148,44 @@ a {
 
 
   .remaining_time,
-  .coming,
-  .people_coming {
+  .coming{
     background-color: rgb(255, 255, 255);
   }
 
   .coming,
-  .people_coming {
-    margin-top: 30px;
+  .people_coming h1{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+   .coming,
+  .people_coming h2{
+    margin-bottom: 10px;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .button_vote{
+    position: absolute;
+    margin-left: 50px;
+    width: 80px;
+    height: 30px;
+    background-color: #ff9900;
+    border-radius: 5px;
+  }
+
+  .button_vote a{
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 7px;
+    color: white;
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-size: 18px;
   }
 
   @media only screen and (max-width: 1295px) {
@@ -1193,12 +1238,3 @@ a {
     }
 
   }
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> origin/master

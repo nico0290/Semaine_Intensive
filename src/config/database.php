@@ -1,10 +1,10 @@
 <?php
 
 // Connexion variables
-define('DB_HOST','localhost');
-define('DB_NAME','moviefriends');
-define('DB_USER','root');
-define('DB_PASS','root'); 
+define('DB_HOST','mysql55-48.perso');
+define('DB_NAME','achappuysbachap');
+define('DB_USER','achappuysbachap');
+define('DB_PASS','4L3awDjtf3M'); 
 
 try
 {

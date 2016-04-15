@@ -10,7 +10,7 @@ function getEventsFromFbID ($fbID) {
     global $database;
     
     $request = $database->prepare("
-        SELECT eu.owner, e.id, e.date, em.movies_id, m.title, m.genre 
+        SELECT eu.owner, e.id, e.date, e.address, e.city, e.zip, em.movies_id, m.title, m.genre  
         FROM events_user eu
         INNER JOIN events e ON e.id = eu.events_id 
         INNER JOIN events_movies em ON em.events_id = eu.events_id
@@ -58,6 +58,15 @@ function getHighestMovies($eventID) {
     return $request->fetchAll();
 }
 
+function usersComingToEvent($eventID) {
+    global $database;
+
+    $request = $database->prepare("SELECT * FROM events_user WHERE events_id = '$eventID'");
+    $request->execute();
+
+    return $request->fetchAll();
+}
+
 function belongsToEvent($eventID, $fbID) {
     global $database;
 
@@ -70,6 +79,12 @@ function belongsToEvent($eventID, $fbID) {
     $result = $request->fetch();
 
     return (!$result) ? false : true;
+}
+
+function addUserToEvent($eventID, $fbID) {
+    global $database;
+
+    $database->exec("INSERT INTO events_user SET events_id = '$eventID', fbid = '$fbID'");
 }
 
 
@@ -119,11 +134,12 @@ function getOwnerByEventIdFbId ($eventID, $fbID) {
 }
 
 
-function createFromFbId ($fbID) {
+function createFromFbId ($fbID, $date, $address, $zip, $city, $hour) { 
     global $database;
 
     $id = substr(sha1(rand(0, 9999) * time()), 0, 4);
-    $date = time() + (3600 * 24 * 7);
-    $database->exec("INSERT INTO events SET id = '$id', date = '$date'");
+    $database->exec("INSERT INTO events SET id = '$id', date = '$date', address = '$address', zip = '$zip', city = '$city', hour = '$hour'");
     $database->exec("INSERT INTO events_user SET fbid = '$fbID', events_id = '$id', owner = 1");
+
+    return $id;
 }

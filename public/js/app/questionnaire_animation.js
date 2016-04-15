@@ -1,6 +1,16 @@
 var plus = $('.food_icon_6');
+var confirm = $('.confirm');
+var form = $('form');
 var checked_items = [];
 var icons_food = $('.icons_col_check');
+var adress = form.find('#adress');
+var adress2 = form.find('#adress_2');
+var zip = form.find('#zip_code');
+var city = form.find('#city');
+var date = form.find('#date');
+var hour = form.find('#hour');
+var phone = form.find('#phone');
+var comment = form.find('#comments');
 // var icons = $('.');
 // var pays = $('.pays');
 // var brings = $('.brings');
@@ -38,8 +48,34 @@ $('.confirm').on('click', function() {
 		}
 
 	}
+});
 
-	console.log(checked_items);
+confirm.on('click', function() {
+	form.submit();
+});
+
+form.on('submit', function() {
+	var adress_value= adress.val();
+	var zip_value= zip.val();
+	var city_value= city.val();
+	var date_value= $('#date').val();
+	var hour_value= hour.val();
+	var comment_value= comment.val();
+	
+	$.post('questionnaire.php', {
+		address: adress_value, 
+		zip: zip_value, 
+		city: city_value, 
+		day: date_value, 
+		hour: hour_value, 
+		comment: comment_value,
+	}, function(data) {
+		if (data.error) return alert(data.message);
+		window.location.href = "event.pho?event="+ data.event
+		console.log('ok');
+	});
+
+	return false;
 });
 
 

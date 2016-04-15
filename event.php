@@ -2,7 +2,6 @@
 header("Accept:application/json");
 require_once __DIR__ ."/src/root.php";
 
-<<<<<<< HEAD
 if (!$userInfos) {
 	header('Location: index.php');
 	exit;
@@ -34,40 +33,27 @@ if (isset($_GET['vote'])) {
 $movies = getHighestMovies($eventID);
 
 require_once __DIR__ ."/src/views/template/header.php";
+require_once __DIR__ ."/src/views/template/section_header.php";
 ?>
-=======
-if ($userInfos) {
-	require_once __DIR__ ."/src/lib/eventsDelete.php";
-	require_once __DIR__ ."/src/lib/eventsAdd.php";
-} else {
-	require_once __DIR__ ."/src/lib/facebookLogin.php";
-}
-
-require_once __DIR__ ."/src/views/template/header.php";
-?>
-<?php require_once __DIR__ ."/src/views/template/section_header.php"; ?>
->>>>>>> origin/master
 <section class="container">
 	<h1 class="submit_title">Submit your movie</h1>
 	<div class="left_col">
 		<input type="text" class="movie_search" name="movie">
-<<<<<<< HEAD
+		<div class="search_suggestion"></div>
 		<div class="proposed_movies_container">
-			<h2>proposed movies</h2>
+			<h2>Proposed movies</h2>
 			<div class="proposed_movies">
 				<?php foreach($movies as $movie): ?>
 					<div class="movie_display">
 						<img src="<?= $movie->cover; ?>" class="movie_jacket">
-						<h1><?= $movie->title; ?></h1>
-						<p><?= $movie->votes; ?></p>
-						<a href="?event=<?= $eventID ?>&vote=<?= $movie->id; ?>">VOTE</a>
+						<h1><?= $movie->id; ?></h1>
+						<p>Nb of vote: <?= $movie->votes; ?></p>
+						<div class="button_vote">
+							<a href="?event=<?= $eventID ?>&vote=<?= $movie->id; ?>">VOTE</a>
 						</div>
+					</div>
 				<?php endforeach; ?>
 			</div>
-=======
-		<div class="proposed_movies">
-			
->>>>>>> origin/master
 		</div>
 		<div class="cream_of_the_crop">
 			<div class="movie_display">
@@ -101,63 +87,35 @@ require_once __DIR__ ."/src/views/template/header.php";
 		</div>
 	</div>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 	<div class="right_col">
-		<div class="remaining_time">
-			<span class="days"></span>
-			<span class="hours"></span>
-			<span class="minutes"></span>
-		</div>
-		<div class="coming">
-			<h2>Will you come ?</h2>
-			<div class="answers_container">
-				<span class="yes yes_positive"></span>
-				<span class="no no_negative"></span>
-			</div>
-		</div>
 		<div class="people_coming">
+			<h2>Link to share to your friends</h2>
+			<input type="text" style="width: 300px; height: 30px" value="http://achappuy.com/si/?redirect=join.php?event=<?= $eventID ?>">
+			<h1>Who is coming?</h1>
 
+			<?php 
+				$users = usersComingToEvent($eventID);
+				foreach ($users as $user):
+					$c = curl_init();
+					curl_setopt($c, CURLOPT_URL, "https://graph.facebook.com/v2.6/{$user->fbid}?access_token={$_SESSION['fbtoken']}");
+					curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+					$fbInfos = json_decode(curl_exec($c));
+			?>
 			<div class="people_infos">
-				<div class="fb_pict"></div>
+				<div class="fb_pict"><img src="http://graph.facebook.com/v2.6/<?= $user->fbid ?>/picture?type=normal"></div>
 				<div class="fb_infos">
-					<span class="name">Someone</span>
-					<div>comes</div>
+					<span class="name"><?= $fbInfos->name ?></span>
 				</div>
 
 				<div class="items_brought"></div>
 			</div>
-			<div class="people_infos">
-				<div class="fb_pict"></div>
-				<div class="fb_infos">
-					<span class="name">Someone</span>
-					<div>comes</div>
-				</div>
-
-				<div class="items_brought"></div>
-			</div>
-			<div class="people_infos">
-				<div class="fb_pict"></div>
-				<div class="fb_infos">
-					<span class="name">Someone</span>
-					<div>comes</div>
-				</div>
-
-				<div class="items_brought"></div>
-			</div>
-
+			<?php endforeach; ?>
 		</div>
 		<div class="comment"></div>
 		<div class="map"></div>
 	</div>
-<<<<<<< HEAD
-</section>
-
-<?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
-=======
-
+	<input type="hidden" class= "eventID" value="<?php echo $eventID ?>">
+	<input type="hidden" class= "fbID" value="<?php echo $user->fbid ?>">
 </section>
 <?php require_once __DIR__ ."/src/views/template/footer.php"; ?>
->>>>>>> origin/master

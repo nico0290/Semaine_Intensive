@@ -1,13 +1,34 @@
 <?php 
-header("Accept:application/json");
 require_once __DIR__ ."/src/root.php";
 
-if ($userInfos) {
-	require_once __DIR__ ."/src/lib/eventsDelete.php";
-	require_once __DIR__ ."/src/lib/eventsAdd.php";
-} else {
-	require_once __DIR__ ."/src/lib/facebookLogin.php";
+if (!$userInfos) {
+	header('Location: index.php');
+	exit;
 }
+
+// API POST
+if(!empty($_POST)) {
+	header('Content-type: application/json');
+
+	$address = $_POST['address'];
+	$zip = $_POST['zip'];
+	$city = $_POST['city'];
+	$date = $_POST['day'];
+	$hour = $_POST['hour'];
+	$comment = $_POST['comment'];
+
+	if (empty($address) || empty($zip) || empty($city) || empty($date) || empty($hour)) {
+		echo json_encode(['error' => true, 'message' => 'Please fill all the inputs']);
+		exit;
+	}
+
+	$date = strtotime($date);
+	$event = createFromFbId($userInfos->getId(), $date, $address, $zip, $city, $hour); 
+
+	echo json_encode(['error' => false, 'event' => $event]);
+	exit;
+}
+
 
 require_once __DIR__ ."/src/views/template/header.php";
 ?>
@@ -79,7 +100,7 @@ require_once __DIR__ ."/src/views/template/header.php";
 </div>
 <section class="container">
 	<h1 class="create_your_film">Create your film session</h1>
-	<!-- COLONNE 1 ON 3-->
+	<!-- COLONNE 1 ON 2-->
 	<div class="col col_1">
 		<div class="col_header">
 			<h2>step 1</h2>
@@ -90,12 +111,8 @@ require_once __DIR__ ."/src/views/template/header.php";
 			<form action="#" method="POST">
 				<div class="first_part">
 					<div class="label">
-						<label for="adress">Adress</label>
+						<label for="address">Adress</label>
 						<input class="input" type="text" id="adress" name="adress">
-					</div>
-					<div class="label">
-						<label for="adress_2">Adress 2</label>
-						<input class="input" type="text" id="adress_2" name="adress_2">
 					</div>
 				</div>
 				<div class="second_part">
@@ -118,20 +135,14 @@ require_once __DIR__ ."/src/views/template/header.php";
 					<div class="line line_2">
 						<div class="form_col_1">
 							<div class="label">
-								<label for="when">When ?</label>
-								<input class="input" type="date" id="when" name="date" placeholder="dd/mm/yyyy">
+								<label for="date">When ?</label>
+								<input class="input" type="date" id="date" name="date" placeholder="dd/mm/yyyy">
 							</div>
 						</div>
 						<div class="form_col_2">
 							<div class="label">
 								<input class="input" type="time" id="hour" name="hour">
 							</div>
-						</div>
-					</div>
-					<div class="line line_3">
-						<div class="label">
-							<label for="phone">Phone</label>
-							<input class="input" type="tel" id="phone" name="phone">
 						</div>
 					</div>
 
@@ -142,13 +153,15 @@ require_once __DIR__ ."/src/views/template/header.php";
 						</div>
 					</div>
 				</div>
+				<input type="submit" value="confirm" class="confirmForm" style="display: none;">
 			</form>
 		</div>
 	</div>
-	<!-- COLONNE 2 ON 3-->
-	<div class="col col_2">
+	<!-- COLONNE 2 ON 2-->
+	<div class="col col_2" style="float: right;">
 		<div class="col_header">
 			<h2>step 2</h2>
+			<h2><? $userInfos->getId() ?></h2>
 			<h3>Extras ?</h3>
 		</div>
 
@@ -186,24 +199,6 @@ require_once __DIR__ ."/src/views/template/header.php";
 
 		</div>
 	</div>
-	<!-- COLONNE 3 ON 3-->
-	<div class="col col_3">
-		<div class="col_header">
-			<h2>step 3</h2>
-			<h3>Invite your friends</h3>
-		</div>
-		<div class="col_container">
-			<input type="text" name="friend" placeholder="search a friend" id="friend_search">
-			<div class="fb_friend_container">
-				<div class="fb_user_pict"></div>
-				<div class="fb_user_name">Someone</div>
-			</div>
-			<div class="fb_friend_container">
-				<div class="fb_user_pict"></div>
-				<div class="fb_user_name">else</div>
-			</div>
-		</div>
-	</div>
-	<a href="#" class="confirm">Create</a>
+	<a window.location.href = "event.pho?event="+ data.event class="confirm">Create</a>
 </section>
 <?php require_once __DIR__ ."/src/views/template/footer.php"; ?>

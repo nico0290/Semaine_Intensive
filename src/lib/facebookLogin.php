@@ -10,10 +10,15 @@ if (isset($_GET['facebookLogin'])) {
     }
 
     $_SESSION['fbtoken'] = $accessToken->getValue();
-    header('Location: index.php');
+    $redirect = 'index.php';
+    
+    if (!empty($_GET['redirect'])) {
+        $redirect = $_GET['redirect'];
+    }
+
+    header('Location: '. $redirect);
     exit;
 }
-
 
 
 if (isset($_GET['logout'])) {

@@ -8,6 +8,8 @@
 		require_once __DIR__ ."/src/lib/facebookLogin.php";
 	}
 
+	$rootRedirect = (!empty($_GET['redirect'])) ? $_GET['redirect'] : 'index.php';
+
 	require_once __DIR__ ."/src/views/template/header.php";
 ?>	
 	<div class="black">
